@@ -24,7 +24,12 @@ There is three major version of the app released before.
 
 ## Screenshots
 ## NEW UI
-![Launch Screen]([https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/Custom-UIView.png](https://github.com/Jagjeetsingh-uel/SwiftLanguageWeather/blob/feature_implementation/screenshots/New%20UI/WeatherAppScreenShot1.png?raw=true))
+![Launch Screen](https://github.com/user-attachments/assets/60c9d3de-ce78-446f-ba49-77b6b7338672)
+![Location Permission Screen](https://github.com/user-attachments/assets/cfcd780e-bb61-4a68-ad2c-69910fa47dc7)
+![Main Screen](https://github.com/user-attachments/assets/e0472a0c-2128-40bb-901f-ef7dc87d2b52)
+![Search Place](https://github.com/user-attachments/assets/c4a12bad-93ec-4a67-8746-568d16457550)
+
+
 
 
 ## Features

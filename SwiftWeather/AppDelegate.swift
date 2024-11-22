@@ -13,10 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(_ application: UIApplication,
-      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
-    return true
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      // Override point for customization after application launch.
+      
+      let vc = LocationPermissionViewController.loadFromNib()
+      //      let vc = SearchLocationViewController.loadFromNib()  //For Testing Search Feature
+      let navi = UINavigationController(rootViewController: vc)
+      navi.setNavigationBarHidden(true, animated: true)
+      self.window?.rootViewController = navi
+      
+      //LIGHT APP INTERFABE
+      if #available(iOS 13.0, *) {
+          window?.overrideUserInterfaceStyle = .light
+      }
+      return true
   }
 
   func applicationWillResignActive(_ application: UIApplication) {

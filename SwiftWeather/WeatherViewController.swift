@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import FacebookShare
+//import FacebookShare
 import CoreSpotlight
 import MobileCoreServices
 
@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet var forecastViews: [ForecastView]!
-    
+    var directSearch = false
     let identifier = "WeatherIdentifier"
     
     //MARK: - Super Methods
@@ -29,7 +29,16 @@ class WeatherViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureLabels()
+        if directSearch {
+            let viewController = SearchLocationViewController.loadFromNib()
+            viewController.manageSelection { selectedLoc in
+                self.directSearch = false
+                self.viewModel?.locationDidUpdate(location: selectedLoc)
+            }
+            self.navigationController?.pushViewController(viewController, animated: false)
+        } else {
+            configureLabels()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,19 +107,19 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK: Actions
-    @IBAction func shareButtonPressed(_ sender: Any) {
-        shareOnFacebook()
+    @IBAction func actionSearchPressed(_ sender: Any) {
+        let viewController = SearchLocationViewController.loadFromNib()
+        viewController.manageSelection { selectedLoc in
+            self.viewModel?.locationDidUpdate(location: selectedLoc)
+        }
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
-    func shareOnFacebook(){
-        let photo = Photo(image: #imageLiteral(resourceName: "background"), userGenerated: false)
-        let myContent = PhotoShareContent(photos: [photo])
-        let shareDialog = ShareDialog(content: myContent)
-        shareDialog.mode = .native
-        shareDialog.failsOnInvalidData = true
-
-        try? shareDialog.show()
+    @IBAction func shareButtonPressed(_ sender: Any) {
+       // shareOnFacebook()
     }
+    
+
     
     //MARK: Private Functions
     private func setLocationLabel() {

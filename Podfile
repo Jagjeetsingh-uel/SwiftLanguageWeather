@@ -1,9 +1,9 @@
-platform :ios, '10.0'
+platform :ios, '15.0'
 use_frameworks!
 
 target 'SwiftWeather' do
     pod 'SwiftyJSON'
-    pod 'FacebookShare'
+    #pod 'FacebookShare'
 end
 
 abstract_target 'Tests' do

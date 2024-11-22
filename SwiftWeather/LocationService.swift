@@ -7,7 +7,7 @@ import Foundation
 import CoreLocation
 
 protocol LocationServiceDelegate {
-  func locationDidUpdate(_ service: LocationService, location: CLLocation)
+  func locationDidUpdate(_ service: LocationService?, location: CLLocation)
     func locationDidFail(withError error: SWError)
 }
 
